@@ -116,7 +116,7 @@ def load_cosine_similarity():
 # Sử dụng cache để lưu surprise_svd
 @st.cache_data
 def load_surprise_svd():
-    with open('model/surprise_svd.pkl', 'rb') as f:
+    with open('model/cosine.pkl', 'rb') as f:
         surprise_svd = pickle.load(f)
     return surprise_svd
 
