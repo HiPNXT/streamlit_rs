@@ -3,7 +3,7 @@ numpy
 pandas
 matplotlib
 seaborn
-surprise
+scikit-surprise
 scikit-learn
 langdetect
 rapidfuzz
