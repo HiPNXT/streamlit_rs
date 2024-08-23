@@ -109,7 +109,7 @@ def load_data_final():
 # Sử dụng cache để lưu cosine similarity
 @st.cache_data
 def load_cosine_similarity():
-    with open('model/surprise_svd.pkl', 'rb') as f:
+    with open('model/cosine.pkl', 'rb') as f:
         cosine_sim_new = pickle.load(f)
     return cosine_sim_new
 
