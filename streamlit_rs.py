@@ -135,7 +135,7 @@ df = load_data()
 df_info = load_info()
 data_recommend = data_pre(df)
 cosine_sim_new = load_cosine_similarity()
-surprise_svd = load_surprise_svd()
+abc = load_surprise_svd()
 
 # Using menu
 menu = ["Giới thiệu", "Xây dựng Collaborative Filtering", "Xây dựng Content-Based", "Đề xuất dựa trên người dùng", "Đề xuất dựa trên nội dung"]
@@ -272,7 +272,7 @@ elif choice == 'Đề xuất dựa trên người dùng':
     st.subheader("Đề xuất cho bạn ")
 
     df_score = df_hotels[['Hotel_idx', 'Hotel ID']]
-    df_score['EstimateScore'] = df_score['Hotel_idx'].apply(lambda x: surprise_svd.predict(selected_hotel[1], x).est) # est: get EstimateScore
+    df_score['EstimateScore'] = df_score['Hotel_idx'].apply(lambda x: abc.predict(selected_hotel[1], x).est) # est: get EstimateScore
     df_score = df_score.sort_values(by=['EstimateScore'], ascending=False)
     df_score = df_score.drop_duplicates()
     df_score = df_score[df_score['EstimateScore'] >= 9.5]
