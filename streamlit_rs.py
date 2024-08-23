@@ -3,6 +3,7 @@ import pandas as pd
 import pickle
 from langdetect import detect
 import re
+import surprise
 from rapidfuzz import process, fuzz
 
 # Hàm đề xuất 
