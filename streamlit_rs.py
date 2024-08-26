@@ -364,6 +364,7 @@ elif choice == 'Đề xuất dựa trên nội dung':
                 st.write('##### Địa chỉ:')
                 st.write(truncated_address)
 
+                st.write('Tổng số đánh giá: ', selected_hotel['Tổng đánh giá'].values[0])
                 st.write('##### Các khách sạn khác bạn cũng có thể quan tâm:')
                 recommendations = get_recommendations(data_recommend, st.session_state.selected_hotel_id, cosine_sim=cosine_sim_new, nums=3) 
                 display_recommended_hotels(recommendations, cols=3)
