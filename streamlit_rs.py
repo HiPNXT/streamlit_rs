@@ -38,7 +38,8 @@ def display_recommended_hotels(recommended_hotels, cols=5):
             if i + j < len(recommended_hotels):
                 hotel = recommended_hotels.iloc[i + j]
                 with col:   
-                    st.write(hotel['Hotel_Name'])                    
+                    st.write(hotel['Hotel_Name'])
+                    st.write('Tổng số đánh giá:', hotel['Tổng đánh giá'])                    
                     expander_description = st.expander(f"Thông tin chi tiết")
                     hotel_description = hotel['Hotel_Description']
                     truncated_description = ' '.join(hotel_description.split()[:300]) + '...'
@@ -124,9 +125,10 @@ def load_surprise_svd():
 #Tiền xử lý dữ liệu khách sạn
 @st.cache_data
 def data_pre(df):
-    data_recommend = df[['Hotel_ID', 'Hotel_Name' ,'Hotel_Description', 'Hotel_Address']]
+    data_recommend = df[['Hotel_ID', 'Hotel_Name' ,'Hotel_Description', 'Hotel_Address', 'comments_count']]
     data_recommend.drop_duplicates(inplace=True)
     data_recommend.dropna(inplace=True)
+    data_recommend.rename(columns={'comments_count': 'Tổng đánh giá'}, inplace=True)
     data_recommend['Language'] = data_recommend['Hotel_Description'].apply(detect_language)
     data_recommend = data_recommend[data_recommend['Language'] == 'vi'].drop('Language', axis=1)
     return data_recommend
